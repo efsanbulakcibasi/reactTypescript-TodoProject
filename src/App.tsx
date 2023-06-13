@@ -24,6 +24,11 @@ function App() {
     console.log(list);
   };
 
+  const deleteTask = (nameToDelete:string):void => {
+    const deleteList = list.filter((x) => x.taskName !== nameToDelete )
+    setList(deleteList)
+  }
+
   return (
     <div className="App">
       <div className="a-item">
@@ -49,7 +54,7 @@ function App() {
       </div>
       <div className="b-item">
         {list.map((item: TodoTypeList, index: number) => {
-          return <ShoweToDo key={index} task={item} />;
+          return <ShoweToDo deleteTask={deleteTask} key={index} task={item} />;
         })}
       </div>
     </div>
